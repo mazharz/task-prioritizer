@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react";
-import { useTaskState } from "../state/task";
+import { useTaskState } from "../../state/task";
+import { Input } from "../input";
 
 const CreateTask = () => {
   const { addTask } = useTaskState();
@@ -9,21 +10,20 @@ const CreateTask = () => {
     e.preventDefault();
     // TODO: handle id creation
     addTask({ id: "", title });
+    setTitle("");
   };
 
   return (
     <div>
       <form onSubmit={submitHandler}>
-        <input
-          name="title"
+        <Input
+          name="task title"
           type="text"
-          className="border"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          setValue={setTitle}
+          placeholder="Add a task"
+          className="w-full"
         />
-        <button type="submit" className="border">
-          add task
-        </button>
       </form>
     </div>
   );
