@@ -9,7 +9,7 @@ const CreateCategory = () => {
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // TODO: handle id creation
-    addCategory({ id: "", title });
+    addCategory(title);
     setTitle("");
   };
 

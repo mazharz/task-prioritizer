@@ -14,7 +14,7 @@ const Input = ({ setValue, className = "", ...props }: Props) => {
     <input
       {...props}
       onChange={(e) => setValue(e.target.value)}
-      className={`${className} py-2 px-3 border border-gray-300 rounded-lg outline-none`}
+      className={`${className} py-2 px-3 border bg-transparent border-gray-500 placeholder-gray-500 focus:border-gray-400 transition-colors rounded-lg outline-none`}
     />
   );
 };
