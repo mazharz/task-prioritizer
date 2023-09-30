@@ -1,9 +1,10 @@
 import { useCategoryState } from "@/app/state/category";
 
 const Prioritizer = () => {
-  const { categories } = useCategoryState();
+  const { categories, removeCategory } = useCategoryState();
+
   return (
-    <div className="row-span-2 grid grid-cols-2">
+    <div className="grid grid-cols-2">
       {categories.map((category, index) => (
         <div
           key={category.title + index}
@@ -16,6 +17,12 @@ const Prioritizer = () => {
             className="absolute top-0 left-0 text-gray-800 pl-2 pr-3 rounded-br-md"
             style={{ backgroundColor: category.color }}
           >
+            <span
+              className="cursor-pointer mr-2 select-none"
+              onClick={() => removeCategory(category.id)}
+            >
+              X
+            </span>
             {category.title}
           </div>
         </div>

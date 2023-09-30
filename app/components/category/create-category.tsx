@@ -1,9 +1,9 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useState, useEffect, useRef } from "react";
 import { Input } from "../input";
 import { useCategoryState } from "@/app/state/category";
 
 const CreateCategory = () => {
-  const { addCategory } = useCategoryState();
+  const { addCategory, initialize, categories } = useCategoryState();
   const [title, setTitle] = useState<string>("");
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
@@ -12,6 +12,15 @@ const CreateCategory = () => {
     addCategory(title);
     setTitle("");
   };
+
+  const hasInitializedRef = useRef(false);
+
+  useEffect(() => {
+    if (!categories.length && !hasInitializedRef.current) {
+      initialize();
+      hasInitializedRef.current = true;
+    }
+  }, []);
 
   return (
     <div>

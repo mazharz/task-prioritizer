@@ -1,4 +1,4 @@
-import { cinzel } from "../helper/font/font";
+import { cinzel } from "../helper/font";
 
 const Header = () => {
   return (

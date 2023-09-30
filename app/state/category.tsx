@@ -1,11 +1,12 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { Category } from "../type/category";
-import { ColorHelper } from "../helper/color/color";
+import { ColorHelper } from "../helper/color";
+import { StringHelper } from "../helper/string";
 
 type CategoryContext = {
   categories: Category[];
   addCategory: (title: string) => void;
-  removeCategory: (category: Category) => void;
+  removeCategory: (id: string) => void;
   initialize: () => void;
 };
 
@@ -29,13 +30,16 @@ export const CategoryProvider = ({ children }: Props) => {
     );
     if (alreadyExists) return;
 
+    const ids = categories.map((c) => c.id);
+    const id = StringHelper.getUniqueId(ids, title);
+
     const color = ColorHelper.getRandomHsl();
-    setCategories((state) => [...state, { id: "", title, color: color }]);
+    setCategories((state) => [...state, { id, title, color: color }]);
   };
 
-  const removeCategory = (category: Category) => {
+  const removeCategory = (id: string) => {
     const filtered = categories.filter(
-      (c) => c.title.toLowerCase() !== category.title.toLowerCase()
+      (c) => c.id.toLowerCase() !== id.toLowerCase()
     );
     setCategories(filtered);
   };

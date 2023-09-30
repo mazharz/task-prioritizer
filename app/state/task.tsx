@@ -1,10 +1,11 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { Task } from "../type/task";
+import { StringHelper } from "../helper/string";
 
 type TaskContext = {
   tasks: Task[];
-  addTask: (task: Task) => void;
-  removeTask: (task: Task) => void;
+  addTask: (title: string) => void;
+  removeTask: (title: string) => void;
 };
 
 const TaskContext = createContext<TaskContext>({
@@ -20,12 +21,21 @@ type Props = {
 export const TaskProvider = ({ children }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTask = (task: Task) => {
-    setTasks((state) => [...state, task]);
+  const addTask = (title: string) => {
+    const alreadyExists = tasks.find(
+      (t) => t.title.toLowerCase() === title.toLowerCase()
+    );
+    if (alreadyExists) return;
+
+    const ids = tasks.map((t) => t.id);
+    const id = StringHelper.getUniqueId(ids, title);
+
+    setTasks((state) => [...state, { id, title }]);
   };
-  const removeTask = (task: Task) => {
+
+  const removeTask = (title: string) => {
     const filtered = tasks.filter(
-      (t) => t.title.toLowerCase() !== task.title.toLowerCase()
+      (t) => t.title.toLowerCase() !== title.toLowerCase()
     );
     setTasks(filtered);
   };
