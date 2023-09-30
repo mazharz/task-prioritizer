@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import { TaskProvider } from "./task";
 import { CategoryProvider } from "./category";
+import { MappingProvider } from "./mapping";
 
 type Props = {
   children: ReactNode;
@@ -9,7 +10,9 @@ type Props = {
 const StateProvider = ({ children }: Props) => {
   return (
     <TaskProvider>
-      <CategoryProvider>{children}</CategoryProvider>
+      <CategoryProvider>
+        <MappingProvider>{children}</MappingProvider>
+      </CategoryProvider>
     </TaskProvider>
   );
 };
