@@ -9,6 +9,7 @@ This is a web app inspired by Sarah Drasner's task prioritizing technique.
 - [x] add a way to remove tasks & categories
 - [x] add colors and make things pretty
 - [x] handle drag and drop tasks into their category
+- [x] deploy to GitHub pages
 - [ ] make task disabled (not draggable & not addable via any method) if it appears in all categories
 - [ ] add button to remove tasks
   - [ ] must remove all mappings w/ a certain task that is removed
