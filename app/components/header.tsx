@@ -4,17 +4,14 @@ import Link from "next/link";
 import { GithubIcon } from "../assets/github";
 import { cinzel } from "../helper/font";
 import { QuestionMarkIcon } from "../assets/question-mark";
-import { useRef } from "react";
+import { useState } from "react";
+import { Modal } from "./modal/modal";
 
 const Header = () => {
-  const modalRef = useRef<HTMLDialogElement | null>(null);
+  const [isDescModalOpen, setIsDescModalOpen] = useState<boolean>(false);
 
   const modalOpenHandler = () => {
-    modalRef.current?.showModal();
-  };
-
-  const modalCloseHandler = () => {
-    modalRef.current?.close();
+    setIsDescModalOpen(true);
   };
 
   return (
@@ -37,14 +34,28 @@ const Header = () => {
           <div
             onClick={modalOpenHandler}
             className="h-6 w-6 text-gray-300 hover:text-gray-400 cursor-pointer"
-            title="This is a technique to prioritize your todo tasks, you create categories per your core values (where you want to grow), then you assign your tasks to those said categories, the more categories they get assigned to, the higher priority they will have. This was inspired by a post by Sarah Drasner on css tricks. Made by Maz."
           >
             <QuestionMarkIcon />
           </div>
-          <dialog ref={modalRef}>
-            <p>dialog here</p>
-            <button onClick={modalCloseHandler}>close</button>
-          </dialog>
+          <Modal
+            isOpen={isDescModalOpen}
+            setIsOpen={setIsDescModalOpen}
+            title="What is this tool about?"
+          >
+            <div className="space-y-2">
+              <p>
+                This is a technique to prioritize your todo tasks, you create
+                categories per your core values, then you assign your tasks to
+                those said categories, the more categories they get assigned to,
+                the higher priority they will have.
+              </p>
+              <p>
+                This was inspired by a post by Sarah Drasner on css tricks.
+                <br />
+                Made by Maz.
+              </p>
+            </div>
+          </Modal>
         </div>
       </div>
     </header>

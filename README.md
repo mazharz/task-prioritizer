@@ -11,7 +11,7 @@ This is a web app inspired by Sarah Drasner's task prioritizing technique.
 - [x] handle drag and drop tasks into their category
 - [x] deploy to GitHub pages
 - [x] add GitHub logo linked to the repo in the header
-- [-] Change description title to html5 dialog
+- [x] Change description title to html5 dialog
 - [ ] make task disabled (not draggable & not addable via any method) if it appears in all categories
 - [ ] add button to remove tasks
   - [ ] use svg icon for remove category and tasks
