@@ -27,7 +27,7 @@ const Modal = ({ isOpen, setIsOpen, children, title }: Props) => {
   return (
     <dialog
       ref={ref}
-      className={`${roboto.className} block p-8 rounded-md w-[32rem] text-gray-300 bg-gray-800 backdrop:bg-gray-950 backdrop:bg-opacity-80 open:opacity-100 opacity-0 transition-opacity duration-300`}
+      className={`${roboto.className} block p-8 rounded-lg w-[32rem] text-gray-300 bg-gray-800 backdrop:bg-gray-950 backdrop:bg-opacity-80 open:opacity-100 opacity-0 transition-opacity duration-300`}
       onClick={closeHandler}
     >
       <div onClick={(e) => e.stopPropagation()}>

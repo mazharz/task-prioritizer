@@ -1,6 +1,7 @@
 import { FormEvent, useState, useEffect, useRef } from "react";
 import { Input } from "../input";
 import { useCategoryState } from "@/app/state/category";
+import { Button } from "../button";
 
 const CreateCategory = () => {
   const { addCategory, initialize, categories } = useCategoryState();
@@ -24,7 +25,7 @@ const CreateCategory = () => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="flex gap-2">
         <Input
           name="category title"
           type="text"
@@ -33,6 +34,7 @@ const CreateCategory = () => {
           placeholder="Add a category"
           className="w-full"
         />
+        <Button text="Add" type="submit" />
       </form>
     </div>
   );

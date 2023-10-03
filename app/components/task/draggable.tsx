@@ -14,8 +14,8 @@ const Draggable = ({ children, id, isDisabled }: Props) => {
   });
   const style = transform
     ? {
-      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-    }
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+      }
     : undefined;
 
   return (

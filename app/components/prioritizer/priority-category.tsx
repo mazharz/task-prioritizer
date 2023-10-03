@@ -27,7 +27,7 @@ const PriorityCategory = ({ category }: Props) => {
 
   return (
     <div
-      className="relative rounded-md flex overflow-hidden"
+      className="relative rounded-lg flex overflow-hidden"
       style={{
         border: `2px solid ${category.color}`,
       }}
@@ -35,7 +35,7 @@ const PriorityCategory = ({ category }: Props) => {
       <Droppable id={category.id}>
         <div className="mt-10 mx-4">
           <div
-            className="absolute top-0 left-0 text-gray-800 pl-2 pr-3 rounded-br-md flex items-center gap-2"
+            className="absolute top-0 left-0 text-gray-800 pl-2 pr-3 rounded-br-lg flex items-center gap-2"
             style={{ backgroundColor: category.color }}
           >
             <span

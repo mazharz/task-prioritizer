@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { useTaskState } from "../../state/task";
 import { Input } from "../input";
+import { Button } from "../button";
 
 const CreateTask = () => {
   const { addTask } = useTaskState();
@@ -15,7 +16,7 @@ const CreateTask = () => {
 
   return (
     <div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="flex gap-2">
         <Input
           name="task title"
           type="text"
@@ -24,6 +25,7 @@ const CreateTask = () => {
           placeholder="Add a task"
           className="w-full"
         />
+        <Button text="Add" type="submit" />
       </form>
     </div>
   );
