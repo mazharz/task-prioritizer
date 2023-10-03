@@ -2,6 +2,7 @@ import { ReactNode, createContext, useContext, useState } from "react";
 import { Category } from "../type/category";
 import { ColorHelper } from "../helper/color";
 import { StringHelper } from "../helper/string";
+import { useMappingState } from "./mapping";
 
 type CategoryContext = {
   categories: Category[];
@@ -12,9 +13,9 @@ type CategoryContext = {
 
 const CategoryContext = createContext<CategoryContext>({
   categories: [],
-  addCategory: () => {},
-  removeCategory: () => {},
-  initialize: () => {},
+  addCategory: () => { },
+  removeCategory: () => { },
+  initialize: () => { },
 });
 
 type Props = {
@@ -22,6 +23,7 @@ type Props = {
 };
 
 export const CategoryProvider = ({ children }: Props) => {
+  const { removeCategoryMapping } = useMappingState();
   const [categories, setCategories] = useState<Category[]>([]);
 
   const addCategory = (title: string) => {
@@ -42,6 +44,7 @@ export const CategoryProvider = ({ children }: Props) => {
       (c) => c.id.toLowerCase() !== id.toLowerCase()
     );
     setCategories(filtered);
+    removeCategoryMapping(id);
   };
 
   const initialize = () => {

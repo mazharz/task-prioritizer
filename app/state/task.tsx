@@ -1,17 +1,18 @@
 import { ReactNode, createContext, useContext, useState } from "react";
 import { Task } from "../type/task";
 import { StringHelper } from "../helper/string";
+import { useMappingState } from "./mapping";
 
 type TaskContext = {
   tasks: Task[];
   addTask: (title: string) => void;
-  removeTask: (title: string) => void;
+  removeTask: (id: string) => void;
 };
 
 const TaskContext = createContext<TaskContext>({
   tasks: [],
-  addTask: () => {},
-  removeTask: () => {},
+  addTask: () => { },
+  removeTask: () => { },
 });
 
 type Props = {
@@ -19,6 +20,7 @@ type Props = {
 };
 
 export const TaskProvider = ({ children }: Props) => {
+  const { removeTaskMapping } = useMappingState();
   const [tasks, setTasks] = useState<Task[]>([]);
 
   const addTask = (title: string) => {
@@ -33,11 +35,12 @@ export const TaskProvider = ({ children }: Props) => {
     setTasks((state) => [...state, { id, title }]);
   };
 
-  const removeTask = (title: string) => {
+  const removeTask = (id: string) => {
     const filtered = tasks.filter(
-      (t) => t.title.toLowerCase() !== title.toLowerCase()
+      (t) => t.id.toLowerCase() !== id.toLowerCase()
     );
     setTasks(filtered);
+    removeTaskMapping(id);
   };
 
   return (

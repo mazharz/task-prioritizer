@@ -4,14 +4,18 @@ import { ReactNode } from "react";
 type Props = {
   id: string;
   children: ReactNode;
+  isDisabled: boolean;
 };
 
-const Draggable = ({ children, id }: Props) => {
-  const { attributes, listeners, setNodeRef, transform } = useDraggable({ id });
+const Draggable = ({ children, id, isDisabled }: Props) => {
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id,
+    disabled: isDisabled,
+  });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      }
+      transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+    }
     : undefined;
 
   return (

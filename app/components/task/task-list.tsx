@@ -1,6 +1,5 @@
 import { useTaskState } from "../../state/task";
-import { Draggable } from "./draggable";
-import { Task } from "./task";
+import { DraggableTask } from "./draggable-task";
 
 const TaskList = () => {
   const { tasks } = useTaskState();
@@ -8,10 +7,8 @@ const TaskList = () => {
   return (
     <div>
       <ul className="mt-2">
-        {tasks.map((t) => (
-          <Draggable key={t.id} id={"t:" + t.id}>
-            <Task task={t} />
-          </Draggable>
+        {tasks.map((task) => (
+          <DraggableTask key={task.id} task={task} />
         ))}
       </ul>
     </div>

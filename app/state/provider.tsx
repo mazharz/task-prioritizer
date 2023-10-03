@@ -9,11 +9,11 @@ type Props = {
 
 const StateProvider = ({ children }: Props) => {
   return (
-    <TaskProvider>
-      <CategoryProvider>
-        <MappingProvider>{children}</MappingProvider>
-      </CategoryProvider>
-    </TaskProvider>
+    <MappingProvider>
+      <TaskProvider>
+        <CategoryProvider>{children}</CategoryProvider>
+      </TaskProvider>
+    </MappingProvider>
   );
 };
 

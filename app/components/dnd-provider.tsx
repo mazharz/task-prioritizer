@@ -1,5 +1,11 @@
 import { ReactNode } from "react";
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  PointerSensor,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { useMappingState } from "../state/mapping";
 
 type Props = {
@@ -8,6 +14,13 @@ type Props = {
 
 const DndProvider = ({ children }: Props) => {
   const { mapTask } = useMappingState();
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 8,
+      },
+    })
+  );
 
   const handleDragEnd = (event: DragEndEvent) => {
     if (event.over) {
@@ -15,7 +28,11 @@ const DndProvider = ({ children }: Props) => {
     }
   };
 
-  return <DndContext onDragEnd={handleDragEnd}>{children}</DndContext>;
+  return (
+    <DndContext onDragEnd={handleDragEnd} sensors={sensors}>
+      {children}
+    </DndContext>
+  );
 };
 
 export { DndProvider };
