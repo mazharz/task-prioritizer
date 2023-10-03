@@ -9,8 +9,10 @@ const CreateTask = () => {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TODO: handle id creation
-    addTask(title);
+    const input = title.trim();
+    if (!input.length) return;
+
+    addTask(input);
     setTitle("");
   };
 
