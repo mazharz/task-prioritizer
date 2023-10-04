@@ -20,6 +20,7 @@ This is a web app inspired by Sarah Drasner's task prioritizing technique.
 - [x] add button to add task/category
 - [x] handle empty input add error
 - [x] rank tasks via their number of usages (maybe sort them by their usage on mapping change?)
+- [x] add favicon & image for SEO
 - [ ] add reverse drag to remove from category (in addition to the current click to remove)
 - [ ] add keyboard support to be able to do everything via keyboard (Duolingo-like)
 - [ ] add animations (and preferably SVG animations)

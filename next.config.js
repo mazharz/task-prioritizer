@@ -1,10 +1,12 @@
 /** @type {import('next').NextConfig} */
 
-const pathPrefix =
-  process.env.NODE_ENV === "production" ? "/task-prioritizer" : "";
+const isProduction = process.env.NODE_ENV === "production";
+
+const pathPrefix = isProduction ? "/task-prioritizer" : "";
 
 const nextConfig = {
-  output: process.env.NODE_ENV !== "production" ? undefined : "export",
+  output: isProduction ? "export" : undefined,
+  basePath: pathPrefix,
   assetPrefix: pathPrefix,
   env: {
     pathPrefix,

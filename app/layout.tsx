@@ -10,6 +10,23 @@ export const metadata: Metadata = {
   title: "Task Prioritizer",
   description:
     "Technique to figure out what the priority of your tasks are via assigning them to categories.",
+  metadataBase: new URL("https://mazharz.github.io/task-prioritizer"),
+  openGraph: {
+    title: "Task Prioritizer",
+    description:
+      "Technique to figure out what the priority of your tasks are via assigning them to categories.",
+    images: {
+      url: "task-prioritizer.png",
+    },
+  },
+  twitter: {
+    title: "Task Prioritizer",
+    description:
+      "Technique to figure out what the priority of your tasks are via assigning them to categories.",
+    images: {
+      url: "task-prioritizer.png",
+    },
+  },
 };
 
 export default function RootLayout({
