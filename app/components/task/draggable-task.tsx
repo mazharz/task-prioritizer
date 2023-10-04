@@ -5,6 +5,7 @@ import { useMappingState } from "@/app/state/mapping";
 import { useCategoryState } from "@/app/state/category";
 import { Close } from "@/app/assets/close";
 import { useTaskState } from "@/app/state/task";
+import { cinzel } from "@/app/helper/font";
 
 type Props = {
   task: TTask;
@@ -29,17 +30,24 @@ const DraggableTask = ({ task }: Props) => {
   };
 
   return (
-    <Draggable id={task.id} isDisabled={isDisabled}>
-      <div className="flex items-center group">
-        <Task task={task} isDisabled={isDisabled} />
-        <div
-          className="text-gray-300 h-3 w-3 ml-2 hidden group-hover:block group-active:opacity-0 hover:text-red-500"
-          onClick={removeHandler}
-        >
-          <Close color="currentColor" />
-        </div>
+    <div className="flex items-center gap-2">
+      <div
+        className={`${cinzel.className} text-xl cursor-default min-w-[1.3rem]`}
+      >
+        {mappedCategories.length}
       </div>
-    </Draggable>
+      <Draggable id={task.id} isDisabled={isDisabled}>
+        <div className="flex items-center group">
+          <Task task={task} isDisabled={isDisabled} />
+          <div
+            className="text-gray-300 h-3 w-3 ml-2 hidden group-hover:block group-active:opacity-0 hover:text-red-500"
+            onClick={removeHandler}
+          >
+            <Close color="currentColor" />
+          </div>
+        </div>
+      </Draggable>
+    </div>
   );
 };
 

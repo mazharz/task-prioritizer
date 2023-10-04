@@ -19,7 +19,7 @@ This is a web app inspired by Sarah Drasner's task prioritizing technique.
   - [x] also must remove all mappings w/ a certain category that is removed
 - [x] add button to add task/category
 - [x] handle empty input add error
-- [ ] rank tasks via their number of usages (maybe sort them by their usage on mapping change?)
+- [x] rank tasks via their number of usages (maybe sort them by their usage on mapping change?)
 - [ ] add reverse drag to remove from category (in addition to the current click to remove)
 - [ ] add keyboard support to be able to do everything via keyboard (Duolingo-like)
 - [ ] add animations (and preferably SVG animations)
